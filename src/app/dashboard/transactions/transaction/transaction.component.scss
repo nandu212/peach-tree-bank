@@ -1,0 +1,14 @@
+.transaction {
+    padding: 16px;
+    border-right: 2px solid #b5b5b5;
+    border-bottom: 2px solid #b5b5b5;
+
+    &:first-of-type {
+        border-top: 2px solid #b5b5b5;
+    }
+
+    .image {
+        width: 32px;
+    }
+
+}
