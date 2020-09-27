@@ -247,24 +247,7 @@ export class TransactionsService {
 
   addTransaction(transaction: any) {
     console.log('transaction ', transaction);
-    const request = {
-      categoryCode: '#fbbb1b',
-      dates: {
-        valueDate: new Date().getTime(),
-      },
-      transaction: {
-        amountCurrency: {
-          amount: transaction.amount,
-          currencyCode: "EUR"
-        },
-        type: "Online Transfer",
-        creditDebitIndicator: "DBIT"
-      },
-      merchant: {
-        name: transaction.merchant.name,
-        accountNumber: transaction.merchant.accountNumber
-      }
-    };
+    const request = this.formTransactionRequest(transaction);
     console.log('request ', request);
     const updatedTransactions = [...this.transactions.value, request];
     this.transactions.next(updatedTransactions);
@@ -287,5 +270,26 @@ export class TransactionsService {
 
   private getIconName(merchant: string): string {
     return merchant.replace(/\s/g, '-').toLowerCase();
+  }
+
+  private formTransactionRequest(transaction: any): Transaction {
+    return {
+      categoryCode: '#fbbb1b',
+      dates: {
+        valueDate: new Date().getTime(),
+      },
+      transaction: {
+        amountCurrency: {
+          amount: transaction.amount,
+          currencyCode: "EUR"
+        },
+        type: "Online Transfer",
+        creditDebitIndicator: "DBIT"
+      },
+      merchant: {
+        name: transaction.toAccount.name,
+        accountNumber: transaction.toAccount.accountNumber
+      }
+    };
   }
 }

@@ -1,44 +1,46 @@
-<!-- <div class="container transactions">
-    <div class="transactions__header row">
-        <span>icon</span>
-        <span>Recent Transactions</span>
-    </div>
-    <div class="row transactions__filter">
-        <div class="transactions__filter-search col-12 col-md-6"></div>
-        <div class="transactions__filter-sort col-12 col-md-6">
-            <span>sort by</span>
-            <span>Date</span>
-            <span>Benificiary</span>
-            <span>amount</span>
-        </div>
-    </div>
-    <app-transaction *ngFor="let transaction of transactions" [transaction]=transaction></app-transaction>
-</div> -->
-<div class="card">
-    <div class="card-header bg-info text-white">
-        <img src="./assets/icons/briefcase.png">
-        <span>Recent Transactions</span>
+<div class="card border-0">
+    <div class="card-header d-flex text-white p-3">
+        <img src="../../../assets/icons/briefcase.png">
+        <span class="mx-auto">Recent Transactions</span>
     </div>
     <div class="card-body">
-        <div class="container-fluid transactions">
-            <div class="row transactions__filter">
-                <div class="transactions__filter-search col-12 col-md-6">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" [(ngModel)]="filterValue" name="filterValue">
+        <div class="container-fluid">
+            <div class="row mb-3">
+                <div class="col-12 col-md-6">
+                    <form name="filterForm" #filterForm>
+                        <div class="form-group d-flex">
+                            <input type="text" class="form-input" placeholder="Search by typing..." [(ngModel)]="filterText" name="filterText">
+                            <span *ngIf="filterText" class="clear-filter" (click)="filterForm.reset()">X</span>
                         </div>
                     </form>
                 </div>
-                <div class="transactions__filter-sort col-12 col-md-6">
-                    <span>sort by</span>
-                    <!-- <div class="btn-group"> -->
-                    <span [ngClass]="sortDirection" (click)="sort('date', 'date')">Date</span>
-                    <span [ngClass]="sortDirection" (click)="sort('merchant', 'string')">Benificiary</span>
-                    <span [ngClass]="sortDirection" (click)="sort('amount', 'number')">Amount</span>
-                    <!-- </div> -->
+                <div class="col-12 col-md-6 d-flex justify-content-between align-items-center">
+                    <span class="font-weight-bold">Sort by</span>
+                    <div class="btn-group">
+                        <!-- <app-button class="btn btn-outline-secondary" category="" (onClick)="sort('date', 'date')">
+                            Date <span [ngClass]="sortColumn == 'date' ? sortDirection : ''"></span>
+                        </app-button> -->
+                        <button type="button" class="btn btn-outline-secondary" (click)="sort('date', 'date')">
+                            Date <span [ngClass]="sortColumn == 'date' ? sortDirection : ''"></span>
+                        </button>
+                        <!-- <app-button class="btn btn-outline-secondary" category="" (onClick)="sort('merchant', 'string')">
+                            Benificiary <span [ngClass]="sortColumn == 'merchant' ? sortDirection : ''"></span>
+                        </app-button>
+                        <app-button class="btn btn-outline-secondary" category="" (onClick)="sort('amount', 'number')">
+                            Amount <span [ngClass]="sortColumn == 'amount' ? sortDirection : ''"></span>
+                        </app-button> -->
+                        <button type="button" class="btn btn-outline-secondary" (click)="sort('merchant', 'string')">
+                            Benificiary <span [ngClass]="sortColumn == 'merchant' ? sortDirection : ''"></span>
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" (click)="sort('amount', 'number')">
+                            Amount <span [ngClass]="sortColumn == 'amount' ? sortDirection : ''"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <app-transaction *ngFor="let transaction of (transactions | filter:filterValue | sortBy:sortDirection:sortColumn:type)" [transaction]=transaction></app-transaction>
+            <app-transaction 
+                *ngFor="let transaction of (transactions | filter:filterText | sortBy:sortDirection:sortColumn:type)" 
+                [transaction]=transaction></app-transaction>
         </div>
     </div>
 </div>

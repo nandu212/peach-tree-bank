@@ -4,7 +4,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export interface Account {
   name: string;
   accountNumber: string;
-  balance?: number;
+  balance: number;
+  currencyCode: string;
 }
 
 @Injectable({
@@ -15,7 +16,8 @@ export class UserDataService {
   private accountDetails: BehaviorSubject<Account> = new BehaviorSubject({
     name: 'Nanda',
     accountNumber: '12234567890',
-    balance: 10000
+    balance: 10000,
+    currencyCode: 'EUR'
   });
 
   constructor() { }

@@ -1,0 +1,37 @@
+.card-header {
+    background-color: #0e8396;
+}
+
+.form-group {
+    border-bottom: 2px solid #ced4d9;
+
+    .form-input {
+        display: block;
+        width: 100%;
+        border: none;
+        outline: none;
+
+        &:disabled {
+            background: none;
+        }
+    }
+
+    .clear-filter {
+        padding-left: 10px;
+    }
+
+    .currency-code {
+        margin-right: 5px;
+    }
+}
+
+.asc:before {
+    content: "\25BE";
+    display: inline-block;
+    transform: rotate(180deg);
+    vertical-align: middle;
+}
+
+.desc:before {
+    content: "\25BE";
+}

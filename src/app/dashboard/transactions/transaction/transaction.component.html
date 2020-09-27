@@ -1,13 +1,13 @@
 <div class="row transaction align-items-center" [ngStyle]="{borderLeft: '10px solid ' + transaction.categoryCode}">
     <div class="col-6 col-md-2">{{transaction.date | date: 'MMM. yy'}}</div>
-    <div class="col-6 col-md-1">
+    <div class="col-6 col-md-1 text-right">
         <img [src]="getIconPath(transaction.iconName)" class="image">
     </div>
-    <div class="col-6 col-md-7">
-        <div class="transaction__merchant ">{{transaction.merchant}}</div>
-        <div class="transaction__type ">{{transaction.type}}</div>
+    <div class="col-6 col-md-6">
+        <div class="font-weight-bold">{{transaction.merchant}}</div>
+        <div>{{transaction.type}}</div>
     </div>
-    <div class="col-6 col-md-2">
-        {{transaction.creditDebitIndicator | creditDebitIndicator}} {{transaction.currencyCode | currencyCode}} {{transaction.amount}}
+    <div class="col-6 col-md-3 text-right font-weight-bold">
+        {{transaction.creditDebitIndicator | creditDebitIndicator}}{{transaction.currencyCode | currencyCode}}{{transaction.amount}}
     </div>
 </div>
