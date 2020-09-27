@@ -21,7 +21,7 @@
                 <label for="amount" class="text-uppercase font-weight-bold">Amount</label>
                 <div class="d-flex align-items-center">
                     <span class="currency-code">€</span>
-                    <input type="number" id="amount" class="form-input" placeholder="amount" formControlName="amount">
+                    <input type="number" id="amount" min="0" class="form-input" placeholder="0.00" formControlName="amount">
                 </div>
             </div>
             <div *ngIf="amount.dirty && amount.errors && amount.errors.overdraft" class="alert-danger">Can not overdraft

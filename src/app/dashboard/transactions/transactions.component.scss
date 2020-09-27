@@ -18,6 +18,7 @@
 
     .clear-filter {
         padding-left: 10px;
+        cursor: pointer;
     }
 
     .currency-code {
@@ -25,11 +26,14 @@
     }
 }
 
+.btn-outline-secondary:hover {
+    background-color: inherit;
+}
+
 .asc:before {
     content: "\25BE";
     display: inline-block;
     transform: rotate(180deg);
-    vertical-align: middle;
 }
 
 .desc:before {
